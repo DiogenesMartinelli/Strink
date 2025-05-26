@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Strink - Onde assistir</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #121212;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00e0ff;
+    }
+
+    #buscador {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    input {
+      width: 300px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      background-color: #00e0ff;
+      color: #000;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #ads {
+      background: #1f1f1f;
+      padding: 15px;
+      text-align: center;
+      margin-bottom: 30px;
+      border-radius: 8px;
+      color: #aaa;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+        background: #1e1e1e;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 350px; /* ADICIONADO: limita a largura dos cards */
+        margin: 0 auto;
+    }
+
+    .card img {
+        width: 100%;
+        max-height: 450px; /* ADICIONADO: limita a altura da imagem */
+        object-fit: cover;  /* Previne deformações se o pôster for muito vertical */
+        border-radius: 8px;
+    }
+
+
+    .info {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .plataformas img {
+      margin: 5px;
+      vertical-align: middle;
+      width: 30px;
+    }
+
+    .btn-assistir {
+      margin-top: 10px;
+      background: #00e0ff;
+      color: #000;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-assistir:hover {
+      background: #00c5e0;
+    }
+
+    /* Modal */
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(3px);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #modal {
+      background: #000;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 900px;
+      height: 600px;
+      position: relative;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+
+    #modal iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: 12px;
+    }
+
+    #fechar {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: #ff3b3b;
+      border: none;
+      color: #fff;
+      font-size: 18px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    #fechar:hover {
+      background: #e60000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Strink</h1>
+
+  <div id="buscador">
+    <input type="text" id="busca" placeholder="Digite o nome do filme ou série..." />
+    <button onclick="buscar()">Buscar</button>
+  </div>
+
+  <div id="ads">🔸 Espaço reservado para anúncios ou banners promocionais 🔸</div>
+
+  <div id="resultados" class="grid"></div>
+
+  <!-- Modal player -->
+  <div id="overlay">
+    <div id="modal">
+      <button id="fechar" onclick="fecharModal()">X</button>
+      <iframe id="iframe-player"></iframe>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
